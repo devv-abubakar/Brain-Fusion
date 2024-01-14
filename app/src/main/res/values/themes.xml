@@ -2,7 +2,10 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.BrainFusion" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/main_color_dim</item>
+        <item name="colorPrimaryDark">@color/main_color_dim</item>
+        <item name="android:windowBackground">@color/main_color_dim</item>
+
     </style>
 
     <style name="Theme.BrainFusion" parent="Base.Theme.BrainFusion" />
