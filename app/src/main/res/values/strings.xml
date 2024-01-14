@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Brain Fusion</string>
+
+    <string name="tag_line">Enjoy the better way to learn and earn. Just on your phone</string>
+    <string name="start_activity">Get Start</string>
+    <string name="app_purpose">Start answering the simple questions and earn money. It doesn\'t matter that you have vast knowledge of things. Just you need is to use your creative mind.</string>
+    <string name="game_rules">Game Rules</string>
+    <string name="user_earning">Points: </string>
+    <string name="premium_text">Access all features just on one click!</string>
+    <string name="btn_get_premium">Get Premium</string>
 </resources>
