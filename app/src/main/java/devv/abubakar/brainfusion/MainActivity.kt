@@ -2,12 +2,9 @@ package devv.abubakar.brainfusion
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.airbnb.lottie.LottieAnimationView
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
-import com.google.android.material.button.MaterialButton
 import devv.abubakar.brainfusion.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
