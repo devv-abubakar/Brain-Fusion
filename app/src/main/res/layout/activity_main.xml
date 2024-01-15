@@ -13,7 +13,7 @@
         android:id="@+id/brain_animation"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_above="@id/tag_line"
+        android:layout_above="@id/text_tag_line"
         android:layout_centerHorizontal="true"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
@@ -21,10 +21,10 @@
 
 
     <TextView
-        android:id="@+id/tag_line"
+        android:id="@+id/text_tag_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/app_purpose"
+        android:layout_above="@id/text_app_description"
         android:layout_marginHorizontal="10sp"
         android:layout_marginBottom="40dp"
         android:fontFamily="sans-serif-black"
@@ -35,10 +35,10 @@
 
 
     <TextView
-        android:id="@+id/app_purpose"
+        android:id="@+id/text_app_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/button_start_activity"
+        android:layout_above="@id/btn_start"
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="50dp"
@@ -48,7 +48,7 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_start_activity"
+        android:id="@+id/btn_start"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"

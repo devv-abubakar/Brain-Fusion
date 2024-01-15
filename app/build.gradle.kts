@@ -33,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    viewBinding {
+        enable=true
+    }
 }
 
 dependencies {
@@ -46,4 +50,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.airbnb.android:lottie:4.1.0")
+    implementation ("com.daimajia.androidanimations:library:2.4@aar")
+
 }
