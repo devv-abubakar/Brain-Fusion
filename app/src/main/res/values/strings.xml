@@ -6,8 +6,13 @@
     <string name="app_purpose">Start answering the simple questions and earn money. It doesn\'t matter that you have vast knowledge of things. Just you need is to use your creative mind.</string>
     <string name="game_rules">Game Rules</string>
     <string name="user_earning">Points: </string>
-    <string name="premium_text">Access all features just on one click!</string>
+    <string name="access_features_label">Access all features just on one click!</string>
     <string name="btn_get_premium">Get Premium</string>
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="try_again">Try Again</string>
+    <string name="user_profile_placeholder_content_description">USER_PROFILE_PLACEHOLDER</string>
+    <string name="points_label_text">Points:</string>
+    <string name="points_earned">…</string>
+    <string name="home_activity_rules_label">Rules</string>
+    <string name="home_activity_levels_label">Levels</string>
 </resources>
