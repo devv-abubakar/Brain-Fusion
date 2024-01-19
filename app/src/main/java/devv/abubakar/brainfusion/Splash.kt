@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 
 class Splash : AppCompatActivity() {
-    private val splashDelay: Long = 3500
+    private val splashDelay: Long = 2500
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)

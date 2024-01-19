@@ -10,28 +10,51 @@ import devv.abubakar.brainfusion.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    companion object {
+        private const val ANIMATION_DURATION = 2000
+        private const val INTERNET_CHECK_DELAY = 1000
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (!isInternetAvailable(this)) {
-            // Launch NoInternetActivity and optionally finish the main activity
-            startActivity(Intent(this, NoInternetActivity::class.java))
-            finish()
-        } else {
+        checkInternetConnection()
 
-            bounceAnimation(binding.brainAnimation, 2000)
-            bounceAnimation(binding.textTagLine, 2100)
-            bounceAnimation(binding.textAppDescription, 2200)
-            bounceAnimation(binding.btnStart, 2300)
+
+    }
+
+    private fun setupButtonClick() {
+        binding.btnStart.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
         }
+    }
+
+    private fun checkInternetConnection() {
+        binding.root.postDelayed({
+            if (!isInternetAvailable(this)) {
+                startActivity(Intent(this, NoInternetActivity::class.java))
+                finish()
+            } else {
+                startBounceAnimations()
+                setupButtonClick()
+            }
+        }, INTERNET_CHECK_DELAY.toLong())
+    }
+
+    private fun startBounceAnimations() {
+        bounceAnimation(binding.brainAnimation, ANIMATION_DURATION)
+        bounceAnimation(binding.textTagLine, ANIMATION_DURATION + 50)
+        bounceAnimation(binding.textAppDescription, ANIMATION_DURATION + 100)
+        bounceAnimation(binding.btnStart, ANIMATION_DURATION + 150)
     }
 
     private fun bounceAnimation(view: View, duration: Int) {
         YoYo.with(Techniques.Bounce)
             .duration(duration.toLong())
-            .repeat(100)
+            .repeat(10)
             .playOn(view)
     }
 }
