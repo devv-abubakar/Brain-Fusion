@@ -14,7 +14,8 @@
     <RelativeLayout
         android:id="@+id/layout_for_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
 
         <RelativeLayout
@@ -22,7 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/home_activity_user_points_background">
+            android:background="@drawable/home_activity_user_points_background"
+            tools:ignore="RelativeOverlap">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/user_profile_pic_image_layout"
@@ -175,7 +177,8 @@
                 android:id="@+id/rules_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_below="@id/rues_text" />
+                android:layout_below="@id/rues_text"
+                tools:ignore="TextSizeCheck" />
 
 
             <TextView

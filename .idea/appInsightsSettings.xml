@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="devv.abubakar.brainfusion" />
+                  <option name="mobileSdkAppId" value="1:201641959801:android:37c47e9e4a976302fccfa8" />
+                  <option name="projectId" value="devv-abubakar-brain-fusion" />
+                  <option name="projectNumber" value="201641959801" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

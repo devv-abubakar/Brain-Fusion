@@ -15,4 +15,8 @@
     <string name="points_earned">…</string>
     <string name="home_activity_rules_label">Rules</string>
     <string name="home_activity_levels_label">Levels</string>
+    <string name="rule_title">Rule Title</string>
+    <string name="rule_description">Rule Description</string>
+    <string name="level_number_text">Level 1</string>
+    <string name="sample">...</string>
 </resources>
