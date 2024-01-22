@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "201641959801",
+    "firebase_url": "https://devv-abubakar-brain-fusion-default-rtdb.firebaseio.com",
+    "project_id": "devv-abubakar-brain-fusion",
+    "storage_bucket": "devv-abubakar-brain-fusion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201641959801:android:37c47e9e4a976302fccfa8",
+        "android_client_info": {
+          "package_name": "devv.abubakar.brainfusion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYTU8Jk0wt2kskkAeNcbXhkSnIvt_Sxa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
