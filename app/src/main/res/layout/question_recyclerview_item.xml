@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color_dim">
+
+
+    <LinearLayout
+        android:id="@+id/question_count_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question_no"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/question_count_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question_count"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/line"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/card2"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginHorizontal="20dp"-->
+    <!--        android:lines="1"-->
+    <!--        android:text="___________________________________________________________________________"-->
+    <!--        android:textColor="@color/main_color_text" />-->
+
+
+    <ImageView
+        android:id="@+id/question_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question_count_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/question_image_content_description" />
+
+
+    <ImageView
+        android:id="@+id/options_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/options_layout"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/options_image_content_description" />
+
+    <RelativeLayout
+        android:id="@+id/options_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/end_text"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="30dp">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            tools:ignore="RelativeOverlap">
+
+            <TextView
+                android:id="@+id/option_a_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/a"
+                android:textColor="@color/white" />
+
+            <CheckBox
+                android:id="@+id/option_a_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/option_a_textview"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            tools:ignore="RelativeOverlap">
+
+            <TextView
+                android:id="@+id/option_b_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/b"
+                android:textColor="@color/white" />
+
+            <CheckBox
+                android:id="@+id/option_b_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/option_b_textview" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            tools:ignore="RelativeOverlap">
+
+            <TextView
+                android:id="@+id/option_c_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/c"
+                android:textColor="@color/white" />
+
+            <CheckBox
+                android:id="@+id/option_c_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/option_c_textview" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/end_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/swipe_up_for_next_question"
+        android:textAlignment="center"
+        android:textColor="#85FFFFFF"
+        app:drawableEndCompat="@drawable/ic_arrow_up"
+        app:drawableStartCompat="@drawable/ic_arrow_up" />
+
+    <ProgressBar
+        android:id="@+id/question_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible" />
+
+
+</RelativeLayout>

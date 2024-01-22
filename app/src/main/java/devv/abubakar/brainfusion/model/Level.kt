@@ -1,7 +1,11 @@
 package devv.abubakar.brainfusion.model
 
 class Level(
-    val levelCount: Int,
-    val locked: Boolean,
-    val pointsEarned: Int
-)
+    val uId: String?,
+    val number: Int,
+    val status: String,
+    val score: Int
+) {
+    // Add a public no-argument constructor
+    constructor() : this("",0, "", 0)
+}

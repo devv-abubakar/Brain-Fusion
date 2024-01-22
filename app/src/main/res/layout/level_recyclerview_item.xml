@@ -7,7 +7,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/level_card"
+        android:id="@+id/level_background_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="15dp"
@@ -19,12 +19,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:gravity="center_vertical">
 
 
             <TextView
-                android:id="@+id/level_no"
+                android:id="@+id/level_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -41,7 +40,7 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/level_score_percent"
+                android:id="@+id/level_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

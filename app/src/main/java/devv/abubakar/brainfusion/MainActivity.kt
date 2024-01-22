@@ -3,12 +3,20 @@ package devv.abubakar.brainfusion
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import devv.abubakar.brainfusion.databinding.ActivityMainBinding
+import devv.abubakar.brainfusion.model.Level
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
 
     companion object {
@@ -21,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        syncLevels()
         checkInternetConnection()
-
 
     }
 
@@ -56,5 +64,50 @@ class MainActivity : AppCompatActivity() {
             .duration(duration.toLong())
             .repeat(10)
             .playOn(view)
+    }
+
+    private fun syncLevels() {
+        val firebaseDatabase = FirebaseDatabase.getInstance()
+        val levelsReference = firebaseDatabase.getReference("levels")
+
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
+        val userAuth = auth.currentUser
+        val anonymousUserId = userAuth?.uid
+
+        levelsReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val levelCount = snapshot.childrenCount.toInt()
+
+                if (anonymousUserId != null) {
+
+
+                    for (i in 1..levelCount) {
+                        val userLevelReference = firebaseDatabase.getReference("user")
+                            .child(anonymousUserId)
+                            .child("levels").child("level$i")
+
+                        userLevelReference.addListenerForSingleValueEvent(object :
+                            ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                if (!snapshot.exists()) {
+                                    val level = Level(anonymousUserId, i, "Locked", 0)
+                                    userLevelReference.setValue(level)
+                                }
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                TODO("Not yet implemented")
+                            }
+
+                        })
+
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
