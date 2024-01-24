@@ -77,7 +77,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@HomeActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
 
         })

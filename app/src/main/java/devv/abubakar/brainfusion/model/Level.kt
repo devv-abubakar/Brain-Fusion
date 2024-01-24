@@ -1,7 +1,7 @@
 package devv.abubakar.brainfusion.model
 
 class Level(
-    val uId: String?,
+    val uId: String,
     val number: Int,
     val status: String,
     val score: Int

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.BrainFusion"
         tools:targetApi="31">
         <activity
+            android:name=".QuestionsActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity

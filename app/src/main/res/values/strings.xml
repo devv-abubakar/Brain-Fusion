@@ -19,7 +19,7 @@
     <string name="rule_description">Rule Description</string>
     <string name="level_number_text">Level 1</string>
     <string name="sample">...</string>
-    <string name="question_no">Question no =</string>
+    <string name="question_no">Question no : </string>
     <string name="question_count">1</string>
     <string name="swipe_up_for_next_question">Swipe Up for next question</string>
     <string name="question_image_content_description">QUESTION_IMAGE_CONTENT_DESCRIPTION</string>
@@ -27,4 +27,6 @@
     <string name="a">a)</string>
     <string name="b">b)</string>
     <string name="c">c)</string>
+    <string name="level">Level</string>
+    <string name="submit">Submit</string>
 </resources>
