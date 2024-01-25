@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -79,15 +80,14 @@ class QuestionsActivity : AppCompatActivity() {
                         }
                     }
                     binding.questionRecyclerview.adapter = QuestionAdapter(questionsArrayList)
+                    binding.questionProgressBar.visibility=View.GONE
                 }
-
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@QuestionsActivity, "Something went wrong", Toast.LENGTH_SHORT)
                     .show()
             }
-
         })
     }
 }

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -47,7 +46,7 @@ class QuestionAdapter(private val arrayList: ArrayList<Question>) :
             .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
             .into(holder.optionImage)
 
-        holder.progression.visibility = View.GONE
+
 
     }
 
@@ -60,6 +59,6 @@ class QuestionAdapter(private val arrayList: ArrayList<Question>) :
         val questionImage: ImageView = itemView.findViewById(R.id.question_image)
         val optionImage: ImageView = itemView.findViewById(R.id.options_image)
         val swipeUpText: TextView = itemView.findViewById(R.id.swipe_up_text)
-        val progression: ProgressBar = itemView.findViewById(R.id.question_progressBar)
+
     }
 }
