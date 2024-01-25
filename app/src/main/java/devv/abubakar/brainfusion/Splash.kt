@@ -103,7 +103,7 @@ class Splash : AppCompatActivity() {
 
                     for (i in 1..levelCount) {
                         val level = if (i == 1) {
-                            Level(anonymousUserId, i, "Unlock", 0)
+                            Level(anonymousUserId, i, "Unlocked", 0)
                         } else {
                             Level(anonymousUserId, i, "Locked", 0)
                         }

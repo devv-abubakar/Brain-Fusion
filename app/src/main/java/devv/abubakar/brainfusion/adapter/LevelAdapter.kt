@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import devv.abubakar.brainfusion.QuestionsActivity
@@ -29,9 +30,14 @@ class LevelAdapter(private val arrayList: ArrayList<Level>) :
         holder.levelScore.text = currentItem.score.toString() + "/9"
 
         holder.levelLayout.setOnClickListener {
-            val intent = Intent(holder.itemView.context, QuestionsActivity::class.java)
-            intent.putExtra("level",currentItem.number.toString())
-            holder.itemView.context.startActivity(intent)
+            if (currentItem.status == "Unlocked") {
+                val intent = Intent(holder.itemView.context, QuestionsActivity::class.java)
+                intent.putExtra("level", currentItem.number.toString())
+                holder.itemView.context.startActivity(intent)
+            } else {
+                Toast.makeText(holder.itemView.context, "Level is Locked", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
