@@ -73,7 +73,6 @@ class Splash : AppCompatActivity() {
                     setUpLevelsForNewUsers()
 
 
-
                 } else {
                     Toast.makeText(
                         this,
@@ -111,6 +110,7 @@ class Splash : AppCompatActivity() {
                         // Assuming you want to set values to Firebase, you need to push the data.
                         userLevelReference.child("level$i").setValue(level)
                     }
+                    handleSignedInGuestUser(splashDelayWithoutAccount)
                 }
             }
 
@@ -118,7 +118,6 @@ class Splash : AppCompatActivity() {
                 Toast.makeText(this@Splash, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
-        handleSignedInGuestUser(splashDelayWithoutAccount)
     }
 
     private fun handleSignedInGuestUser(splashDelay: Long) {

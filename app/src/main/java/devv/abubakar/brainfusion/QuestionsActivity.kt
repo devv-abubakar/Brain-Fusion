@@ -10,9 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseException
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import devv.abubakar.brainfusion.adapter.QuestionAdapter
@@ -25,6 +27,8 @@ class QuestionsActivity : AppCompatActivity() {
     private lateinit var level: String
     private lateinit var questionsArrayList: ArrayList<Question>
 
+    private lateinit var auth: FirebaseAuth
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +39,17 @@ class QuestionsActivity : AppCompatActivity() {
         binding.levelTextview.text = "Level $level"
 
         setUpQuestions()
+
+        binding.levelSubmitTextview.setOnClickListener {
+            Toast.makeText(this, "Submit", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setUpQuestions() {
+
+        auth = FirebaseAuth.getInstance()
+        val userAuth = auth.currentUser
+        val anonymousUserId = userAuth?.uid
 
         // Initialize RecyclerView and its adapter
         binding.questionRecyclerview.layoutManager = LinearLayoutManager(this)
@@ -79,8 +91,15 @@ class QuestionsActivity : AppCompatActivity() {
                             )
                         }
                     }
-                    binding.questionRecyclerview.adapter = QuestionAdapter(questionsArrayList)
-                    binding.questionProgressBar.visibility=View.GONE
+
+                    binding.questionRecyclerview.adapter =
+                        QuestionAdapter(
+                            questionsArrayList,
+                            this@QuestionsActivity,
+                            anonymousUserId.toString()
+                        )
+                    binding.questionProgressBar.visibility = View.GONE
+
                 }
             }
 
@@ -90,4 +109,6 @@ class QuestionsActivity : AppCompatActivity() {
             }
         })
     }
+
+
 }

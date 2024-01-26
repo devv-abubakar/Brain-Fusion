@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!-- checkbox_icon.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- White icon (assuming you want a square icon) -->
+    <item
+        android:drawable="@android:color/white"
+        android:gravity="center">
+        <shape android:shape="rectangle">
+            <size
+                android:width="20dp"
+                android:height="20dp" />
+        </shape>
+    </item>
+
+</layer-list>

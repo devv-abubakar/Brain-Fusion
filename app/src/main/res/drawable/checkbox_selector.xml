@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- checkbox_selector.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Checked state -->
+    <item android:state_checked="true">
+        <layer-list>
+            <!-- Black container -->
+            <item android:drawable="@drawable/checkbox_background"/>
+
+            <!-- White icon -->
+            <item android:drawable="@drawable/checkbox_icon"/>
+        </layer-list>
+    </item>
+
+    <!-- Unchecked state -->
+    <item>
+        <layer-list>
+            <!-- Black container -->
+            <item android:drawable="@drawable/checkbox_background"/>
+
+            <!-- White icon -->
+            <!-- You can use a transparent drawable here or leave it empty for no icon in unchecked state -->
+            <item android:drawable="@drawable/checkbox_icon"/>
+        </layer-list>
+    </item>
+
+</selector>

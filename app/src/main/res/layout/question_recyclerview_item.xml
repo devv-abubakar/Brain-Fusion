@@ -97,6 +97,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/option_a_textview"
+                android:buttonTint="@color/white"
+                android:checked="false"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
         </RelativeLayout>
@@ -120,7 +122,9 @@
                 android:id="@+id/option_b_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/option_b_textview" />
+                android:layout_toEndOf="@id/option_b_textview"
+                android:buttonTint="@color/white"
+                android:checked="false" />
 
         </RelativeLayout>
 
@@ -144,7 +148,9 @@
                 android:id="@+id/option_c_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/option_c_textview" />
+                android:layout_toEndOf="@id/option_c_textview"
+                android:buttonTint="@color/white"
+                android:checked="false" />
 
         </RelativeLayout>
 

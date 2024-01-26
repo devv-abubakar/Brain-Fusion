@@ -5,4 +5,9 @@
     <color name="main_color">#191724</color>
     <color name="main_color_dim">#2C3749</color>
     <color name="main_color_text">#B9FFFFFF</color>
+
+    <color name="your_checked_color">#FF0000</color>
+    <color name="your_unchecked_color">#00FF00</color>
+
+
 </resources>
