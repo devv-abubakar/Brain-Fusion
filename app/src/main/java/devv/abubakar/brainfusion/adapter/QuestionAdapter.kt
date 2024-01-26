@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -66,7 +65,7 @@ class QuestionAdapter(
             .into(holder.optionImage)
 
 
-        holder.checkBoxA.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.checkBoxA.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 holder.checkBoxB.isChecked = false
                 holder.checkBoxC.isChecked = false
@@ -75,7 +74,7 @@ class QuestionAdapter(
             }
         }
 
-        holder.checkBoxB.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.checkBoxB.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 holder.checkBoxA.isChecked = false
                 holder.checkBoxC.isChecked = false
@@ -84,7 +83,7 @@ class QuestionAdapter(
             }
         }
 
-        holder.checkBoxC.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.checkBoxC.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 holder.checkBoxA.isChecked = false
                 holder.checkBoxB.isChecked = false

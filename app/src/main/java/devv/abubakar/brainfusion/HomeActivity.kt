@@ -40,7 +40,9 @@ class HomeActivity : AppCompatActivity() {
         binding.levelsProgressBar.visibility = View.VISIBLE
         setupRulesRecyclerView()
         setupLevelRecyclerView()
+        syncUserScore()
     }
+
 
     private fun setupLevelRecyclerView() {
         // Initialize RecyclerView and its adapter
@@ -121,4 +123,9 @@ class HomeActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun syncUserScore() {
+
+    }
+
 }
