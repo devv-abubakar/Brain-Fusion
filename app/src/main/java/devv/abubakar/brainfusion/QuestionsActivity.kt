@@ -143,6 +143,8 @@ class QuestionsActivity : AppCompatActivity() {
 
                     if (questionNumber == numberOfQuestions) {
                         levelReference.child("score").setValue(totalScore)
+                        startActivity(Intent(this@QuestionsActivity, HomeActivity::class.java))
+                        finish()
                     }
                 }
 
@@ -155,6 +157,10 @@ class QuestionsActivity : AppCompatActivity() {
                 }
             })
         }
-        startActivity(Intent(this, HomeActivity::class.java))
+    }
+
+    @Deprecated("Deprecated in Java")
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
     }
 }

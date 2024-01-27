@@ -9,6 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import devv.abubakar.brainfusion.QuestionsActivity
 import devv.abubakar.brainfusion.R
 import devv.abubakar.brainfusion.model.Level
@@ -28,6 +30,17 @@ class LevelAdapter(private val arrayList: ArrayList<Level>) :
         holder.levelCount.text = "Level ${currentItem.number}"
         holder.levelStatus.text = currentItem.status
         holder.levelScore.text = currentItem.score.toString() + "/9"
+
+
+        if (currentItem.score > 5) {
+            val auth: FirebaseAuth = FirebaseAuth.getInstance()
+            val anonymousUserId = auth.currentUser?.uid
+            val levelStatusUpdateRef = FirebaseDatabase.getInstance().getReference("user")
+                .child(anonymousUserId.toString()).child("levels")
+                .child("level" + currentItem.number.plus(1)).child("status")
+            levelStatusUpdateRef.setValue("Unlocked")
+
+        }
 
         holder.levelLayout.setOnClickListener {
             if (currentItem.status == "Unlocked") {

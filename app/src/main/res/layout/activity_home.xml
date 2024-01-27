@@ -6,213 +6,221 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
 
-
-        <RelativeLayout
-            android:id="@+id/layout_for_scrollview"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="UselessParent">
+            android:layout_height="match_parent">
 
 
             <RelativeLayout
-                android:id="@+id/user_profile_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/home_activity_user_points_background"
-                tools:ignore="RelativeOverlap">
+                android:id="@+id/layout_for_scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent">
+
+
+                <RelativeLayout
+                    android:id="@+id/user_profile_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/home_activity_user_points_background"
+                    tools:ignore="RelativeOverlap">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/user_profile_pic_image_layout"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="20dp">
+
+                        <ImageView
+                            android:id="@+id/user_profile_pic_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/user_profile_placeholder_content_description"
+                            android:src="@drawable/home_activity__ic_user_placeholder" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <TextView
+                        android:id="@+id/rs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/user_profile_pic_image_layout"
+                        android:text="@string/points_label_text"
+                        android:textColor="@color/white" />
+
+
+                    <TextView
+                        android:id="@+id/user_earned_points_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_toEndOf="@+id/rs"
+                        android:text="@string/points_earned"
+                        android:textColor="@color/white" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ad_video_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/home_activity_user_points_background"
+                    android:rotation="180">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/ad_video_animation"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        android:rotation="180"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/reward_animation" />
+
+                </RelativeLayout>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/user_profile_pic_image_layout"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp"
-                    app:cardCornerRadius="20dp">
+                    android:id="@+id/premium_features_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/user_profile_layout"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="20dp"
+                    app:cardBackgroundColor="@color/main_color"
+                    app:cardCornerRadius="12dp"
+                    app:strokeColor="@android:color/transparent">
 
-                    <ImageView
-                        android:id="@+id/user_profile_pic_image"
+
+                    <com.airbnb.lottie.LottieAnimationView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/user_profile_placeholder_content_description"
-                        android:src="@drawable/home_activity__ic_user_placeholder" />
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/light_bulb" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/lightning" />
+
+
+                    <TextView
+                        android:id="@+id/access_features_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="100dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@string/access_features_label"
+                        android:textColor="#B9FFFFFF"
+                        android:textSize="20sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_get_premium"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginBottom="20dp"
+                        android:elevation="12dp"
+                        android:text="@string/btn_get_premium"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/main_color_dim"
+                        app:cornerRadius="12dp" />
+
 
                 </com.google.android.material.card.MaterialCardView>
 
 
-                <TextView
-                    android:id="@+id/rs"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/body_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@+id/user_profile_pic_image_layout"
-                    android:text="@string/points_label_text"
-                    android:textColor="@color/white" />
+                    android:layout_below="@+id/premium_features_layout">
+
+                    <ProgressBar
+                        android:id="@+id/rules_progressbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="100dp" />
+
+                    <TextView
+                        android:id="@+id/rues_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@string/home_activity_rules_label"
+                        android:textColor="@color/white"
+                        android:textSize="25sp" />
 
 
-                <TextView
-                    android:id="@+id/user_earned_points_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_toEndOf="@+id/rs"
-                    android:text="@string/points_earned"
-                    android:textColor="@color/white" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rules_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_below="@id/rues_text"
+                        tools:ignore="TextSizeCheck" />
 
 
+                    <TextView
+                        android:id="@+id/levels_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rules_recyclerView"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@string/home_activity_levels_label"
+                        android:textColor="@color/white"
+                        android:textSize="25sp" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/levels_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/levels_text" />
+
+
+                    <ProgressBar
+                        android:id="@+id/levels_progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/levels_text"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp" />
+
+
+                </RelativeLayout>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/ad_video_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/home_activity_user_points_background"
-                android:rotation="180">
+        </ScrollView>
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/ad_video_animation"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerInParent="true"
-                    android:rotation="180"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/reward_animation" />
-
-            </RelativeLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/premium_features_layout"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@+id/user_profile_layout"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/main_color"
-                app:cardCornerRadius="12dp"
-                app:strokeColor="@android:color/transparent">
-
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/light_bulb" />
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/lightning" />
-
-
-                <TextView
-                    android:id="@+id/access_features_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="100dp"
-                    android:fontFamily="sans-serif-black"
-                    android:text="@string/access_features_label"
-                    android:textColor="#B9FFFFFF"
-                    android:textSize="20sp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_get_premium"
-                    android:layout_width="200dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginBottom="20dp"
-                    android:elevation="12dp"
-                    android:text="@string/btn_get_premium"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/main_color_dim"
-                    app:cornerRadius="12dp" />
-
-
-            </com.google.android.material.card.MaterialCardView>
-
-
-            <RelativeLayout
-                android:id="@+id/body_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/premium_features_layout">
-
-                <ProgressBar
-                    android:id="@+id/rules_progressbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="100dp" />
-
-                <TextView
-                    android:id="@+id/rues_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-black"
-                    android:text="@string/home_activity_rules_label"
-                    android:textColor="@color/white"
-                    android:textSize="25sp" />
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rules_recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_below="@id/rues_text"
-                    tools:ignore="TextSizeCheck" />
-
-
-                <TextView
-                    android:id="@+id/levels_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/rules_recyclerView"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-black"
-                    android:text="@string/home_activity_levels_label"
-                    android:textColor="@color/white"
-                    android:textSize="25sp" />
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/levels_recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/levels_text" />
-
-
-                <ProgressBar
-                    android:id="@+id/levels_progressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/levels_text"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp" />
-
-
-            </RelativeLayout>
-        </RelativeLayout>
-
-    </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>
