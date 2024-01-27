@@ -16,7 +16,6 @@ import devv.abubakar.brainfusion.model.Rule
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var ruleRef: DatabaseReference
     private lateinit var ruleAdapter: RuleAdapter
     private lateinit var userLevelReference: DatabaseReference
     private lateinit var levelArrayList: ArrayList<Level>
@@ -29,20 +28,16 @@ class HomeActivity : AppCompatActivity() {
 
         binding.rulesProgressbar.visibility = View.VISIBLE
         binding.levelsProgressBar.visibility = View.VISIBLE
-        setupRulesRecyclerView()
-        setupLevelRecyclerView()
-        syncUserScore()
-        swipe()
 
-    }
-
-    private fun swipe() {
         binding.refreshLayout.setOnRefreshListener {
             setupRulesRecyclerView()
             setupLevelRecyclerView()
-            syncUserScore()
             binding.refreshLayout.isRefreshing = false
         }
+
+        setupRulesRecyclerView()
+        setupLevelRecyclerView()
+        syncUserScore()
     }
 
     private fun setupLevelRecyclerView() {
@@ -59,16 +54,13 @@ class HomeActivity : AppCompatActivity() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
         val anonymousUserId = auth.currentUser?.uid
         val firebaseDatabase = FirebaseDatabase.getInstance()
-        userLevelReference = firebaseDatabase.getReference("user")
-            .child(anonymousUserId!!)
+        userLevelReference = firebaseDatabase.getReference("user").child(anonymousUserId!!)
             .child("levels")
 
         userLevelReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    for (levelSnapshot in snapshot.children) {
-                        levelArrayList.add(levelSnapshot.getValue(Level::class.java)!!)
-                    }
+                    levelArrayList.addAll(snapshot.children.map { it.getValue(Level::class.java)!! })
                     binding.levelsProgressBar.visibility = View.GONE
                     binding.levelsRecyclerView.adapter = LevelAdapter(levelArrayList)
                 }
@@ -81,23 +73,19 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupRulesRecyclerView() {
-        ruleRef = FirebaseDatabase.getInstance().reference.child("rules").child("rulesList")
+        val ruleRef = FirebaseDatabase.getInstance().reference.child("rules").child("rulesList")
         binding.rulesRecyclerView.apply {
-            layoutManager =
-                LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
             ruleAdapter = RuleAdapter()
             adapter = ruleAdapter
-            fetchRuleDataFromFirebase()
+            fetchRuleDataFromFirebase(ruleRef)
         }
     }
 
-    private fun fetchRuleDataFromFirebase() {
+    private fun fetchRuleDataFromFirebase(ruleRef: DatabaseReference) {
         ruleRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val rulesList = mutableListOf<Rule>()
-                for (ruleSnapshot in dataSnapshot.children) {
-                    ruleSnapshot.getValue(Rule::class.java)?.let { rulesList.add(it) }
-                }
+                val rulesList = dataSnapshot.children.mapNotNull { it.getValue(Rule::class.java) }
                 ruleAdapter.setData(rulesList)
                 binding.rulesProgressbar.visibility = View.GONE
             }
@@ -111,9 +99,9 @@ class HomeActivity : AppCompatActivity() {
     private fun syncUserScore() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
         val anonymousUserId = auth.currentUser?.uid
-        val levelReference =
-            FirebaseDatabase.getInstance().getReference("user").child(anonymousUserId.toString())
-                .child("levels")
+        val levelReference = FirebaseDatabase.getInstance().getReference("user").child(anonymousUserId!!)
+            .child("levels")
+
         levelReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 calculateScore(snapshot.childrenCount.toInt())
@@ -130,8 +118,7 @@ class HomeActivity : AppCompatActivity() {
         val anonymousUserId = auth.currentUser?.uid
 
         for (levelNumber in 1..levelCount) {
-            val levelRef = FirebaseDatabase.getInstance().getReference("user")
-                .child(anonymousUserId.toString())
+            val levelRef = FirebaseDatabase.getInstance().getReference("user").child(anonymousUserId!!)
                 .child("levels").child("level$levelNumber")
 
             levelRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -155,8 +142,8 @@ class HomeActivity : AppCompatActivity() {
     private fun updateScore(totalScore: Int) {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
         val anonymousUserId = auth.currentUser?.uid
-        val userScoreRef = FirebaseDatabase.getInstance().getReference("user")
-            .child(anonymousUserId.toString()).child("score")
+        val userScoreRef = FirebaseDatabase.getInstance().getReference("user").child(anonymousUserId!!)
+            .child("score")
         userScoreRef.setValue(totalScore)
         binding.userEarnedPointsText.text = totalScore.toString()
     }

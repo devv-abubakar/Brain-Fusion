@@ -8,10 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
+
 import devv.abubakar.brainfusion.databinding.ActivityMainBinding
 import devv.abubakar.brainfusion.model.Level
 
@@ -29,15 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        syncLevels()
         checkInternetConnection()
-
-    }
-
-    private fun setupButtonClick() {
-        binding.btnStart.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
-        }
     }
 
     private fun checkInternetConnection() {
@@ -48,8 +38,15 @@ class MainActivity : AppCompatActivity() {
             } else {
                 startBounceAnimations()
                 setupButtonClick()
+                syncLevels()
             }
         }, INTERNET_CHECK_DELAY.toLong())
+    }
+
+    private fun setupButtonClick() {
+        binding.btnStart.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
     }
 
     private fun startBounceAnimations() {
@@ -69,7 +66,6 @@ class MainActivity : AppCompatActivity() {
     private fun syncLevels() {
         val firebaseDatabase = FirebaseDatabase.getInstance()
         val levelsReference = firebaseDatabase.getReference("levels")
-
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
         val userAuth = auth.currentUser
         val anonymousUserId = userAuth?.uid
@@ -78,36 +74,36 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val levelCount = snapshot.childrenCount.toInt()
 
-                if (anonymousUserId != null) {
-
-
+                anonymousUserId?.let { userId ->
                     for (i in 1..levelCount) {
                         val userLevelReference = firebaseDatabase.getReference("user")
-                            .child(anonymousUserId)
+                            .child(userId)
                             .child("levels").child("level$i")
 
                         userLevelReference.addListenerForSingleValueEvent(object :
                             ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 if (!snapshot.exists()) {
-                                    val level = Level(anonymousUserId, i, "Locked", 0)
+                                    val level = Level(userId, i, "Locked", 0)
                                     userLevelReference.setValue(level)
                                 }
                             }
 
                             override fun onCancelled(error: DatabaseError) {
-                                TODO("Not yet implemented")
+                                showToast("Error: ${error.message}")
                             }
-
                         })
-
                     }
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+                showToast("Something went wrong")
             }
         })
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
     }
 }
