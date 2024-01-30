@@ -1,4 +1,4 @@
-# Project Brain Fusion
+# Android APP Brain Fusion
 
 ![Brain Fusion Logo](images/logo.png)
 
