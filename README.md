@@ -2,6 +2,10 @@
 
 ![Brain Fusion Logo](images/logo.png)
 
+# APP Video
+
+Youtube: https://youtu.be/xgKLz4CW3x0
+
 ## Overview
 
 Project Brain Fusion is an interactive IQ-level test game for Android that challenges users with thought-provoking quizzes. Test your cognitive abilities and unlock new levels by answering a series of questions. Are you ready to fuse your brainpower?
